@@ -1,5 +1,5 @@
 {
-  "name": "calendar-picker",
+  "name": "ox-calendar-picker",
   "version": "0.0.1",
   "description": "Calendar days picker",
   "module": "dist/esm/index.js",
