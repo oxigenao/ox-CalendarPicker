@@ -30,6 +30,25 @@ Set to TRUE by default, enable user to select multiple days.
   <calendar-picker  multiple-days=false></calendar-picker>
 ```
 
+Get Selected days
+
+### Example: Angular
+
+```html
+<calendar-picker (selectedDaysUpate)="daysUpdated($event)"  multiple-days=true></calendar-picker>
+```
+
+### Example: Javacript
+
+```html
+<calendar-picker id="calendar"  multiple-days=true></calendar-picker>
+```
+```js
+  var elem = document.getElementById('calendar');
+  elem.addEventListener('selectedDaysUpate', ev =>{
+    console.log("Calendar updated", ev.detail);
+  })
+```
 
 
 ## Developers!
