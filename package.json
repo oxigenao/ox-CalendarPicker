@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oxigenao/CalendarPickerWebComponent"
+    "url": "git+https://github.com/oxigenao/ox-CalendarPicker"
   },
-  "author": "Ionic Team",
+  "author": "Pablo Ortuño",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oxigenao/CalendarPickerWebComponent"
+    "url": "https://github.com/oxigenao/ox-CalendarPicker"
   },
-  "homepage": "https://github.com/oxigenao/CalendarPickerWebComponent",
+  "homepage": "https://github.com/oxigenao/ox-CalendarPicker",
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
