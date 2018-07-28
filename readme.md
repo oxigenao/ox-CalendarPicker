@@ -10,6 +10,7 @@ Early development stage calendarpicker webComponent created with StencilJS.
 ### Node Modules
 - Run `npm install ox-calendar-picker --save`
 - Put a script tag similar to this `<script src='node_modules/ox-calendar-picker/dist/calendarpicker.js'></script>` in the head of your index.html
+- Add IonicIcons `<script src="https://unpkg.com/ionicons@4.2.5/dist/ionicons.js"></script>`
 - Then you can use the element anywhere in your template, JSX, html etc
 
 ### In a stencil-starter app
@@ -24,6 +25,7 @@ Early development stage calendarpicker webComponent created with StencilJS.
   - { "glob": "**/*", "input": "node_modules/ox-calendar-picker/dist", "output": "./assets/ox-calendar-picker" }
 - Import in index.html
   - <script src='assets/ox-calendar-picker/calendarpicker.js'></script>
+- Add IonicIcons `<script src="https://unpkg.com/ionicons@4.2.5/dist/ionicons.js"></script>`
 - Import in app.module
   - import {calendarpicker} from 'ox-calendar-picker/dist/calendarpicker';
 - Enable custom Elements in app.module
