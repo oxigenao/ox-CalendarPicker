@@ -18,6 +18,16 @@ Early development stage calendarpicker webComponent created with StencilJS.
 - Then you can use the element anywhere in your template, JSX, html etc
 
 
+### Import to your angular6 project.
+- Run `npm install ox-calendar-picker --save`
+- Add this to your angular.json architect > build > assets
+  - { "glob": "**/*", "input": "node_modules/ox-calendar-picker/dist", "output": "./assets/ox-calendar-picker" }
+- Import in index.html
+  - <script src='assets/ox-calendar-picker/calendarpicker.js'></script>
+- Import in app.module
+  - import {calendarpicker} from 'ox-calendar-picker/dist/calendarpicker';
+- Enable custom Elements in app.module
+  - schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 
 ## Components options:
@@ -33,6 +43,7 @@ Set to TRUE by default, enable user to select multiple days.
 Get Selected days
 
 ### Example: Angular
+
 
 ```html
 <calendar-picker (selectedDaysUpate)="daysUpdated($event)"  multiple-days=true></calendar-picker>
