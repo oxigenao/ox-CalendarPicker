@@ -63,21 +63,37 @@
     outline: none;
 }
 .calendar-day > button.selected {
-    background-color: dodgerblue;
-    color:white;
+    background-color: dodgerblue !important;
+    color:white !important;
+    opacity: 1 !important;
+}
+
+.calendar-day > button.pastDay {
+      opacity: .4;
+      color:black ;
+}
+.calendar-day > button.today {
+      background-color: lightgray;
+      color:black ;
 }
 
 
 .monthChangeButton{
   padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border:none;
+  background-color: transparent;
   outline: none;
   position: absolute;
   left:50%;
   top:50%;
   transform: translateX(-50%) translateY(-50%);
 }
+
+.monthChangeButton > .monthChangeIcon{
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
 .monthChangeButton:focus {
   outline: none;
 }

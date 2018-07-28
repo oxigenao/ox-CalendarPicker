@@ -215,6 +215,21 @@ export class CalendarPicker {
     this.selectedDaysUpate.emit(this.selectedDaysDate);
   }
 
+  getStringClass(day){
+    let classString = "";
+    let date = new Date();
+    if(day.selected) classString += "selected";
+    if(day.notCurrent) classString += " pastDay";
+
+    if( date.getDate() == day.currentDate.getDate() &&
+    date.getMonth() == day.currentDate.getMonth() &&
+    date.getFullYear() == day.currentDate.getFullYear()){
+      classString += " today";
+    }
+
+    return classString;
+  }
+
   render() {
     return (
       <div class="container">
@@ -224,7 +239,7 @@ export class CalendarPicker {
               class="monthChangeButton"
               onClick={ev => this.decreaseMonth(ev)}
             >
-              Anterior
+              <ion-icon class="monthChangeIcon" name="arrow-back" />
             </button>
           </div>
           <div class="width-6">
@@ -237,9 +252,18 @@ export class CalendarPicker {
               class="monthChangeButton"
               onClick={ev => this.increaseMonth(ev)}
             >
-              Siguiente
+              <ion-icon class="monthChangeIcon" name="arrow-forward" />
             </button>
           </div>
+        </div>
+        <div class="row">
+          {this.daysWeek.map(day => {
+            return (
+              <div class="width-14">
+                <p>{day}</p>
+              </div>
+            );
+          })}
         </div>
         <div class="row">
           {this.daysArray.map((day, index) => {
@@ -247,7 +271,7 @@ export class CalendarPicker {
               <div class="width-14 calendar-day">
                 <button
                   onClick={ev => this.dayClicked(ev, index)}
-                  class={day.selected ? "selected" : ""}
+                  class={this.getStringClass(day)}
                 >
                   {day.day}
                 </button>
