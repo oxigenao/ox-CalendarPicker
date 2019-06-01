@@ -1,4 +1,4 @@
-import { Component, State, EventEmitter, Event, Prop } from "@stencil/core";
+import { Component, State, EventEmitter, Event, Prop, h } from "@stencil/core";
 
 @Component({
   tag: "calendar-picker",
@@ -215,15 +215,17 @@ export class CalendarPicker {
     this.selectedDaysUpate.emit(this.selectedDaysDate);
   }
 
-  getStringClass(day){
+  getStringClass(day) {
     let classString = "";
     let date = new Date();
-    if(day.selected) classString += "selected";
-    if(day.notCurrent) classString += " pastDay";
+    if (day.selected) classString += "selected";
+    if (day.notCurrent) classString += " pastDay";
 
-    if( date.getDate() == day.currentDate.getDate() &&
-    date.getMonth() == day.currentDate.getMonth() &&
-    date.getFullYear() == day.currentDate.getFullYear()){
+    if (
+      date.getDate() == day.currentDate.getDate() &&
+      date.getMonth() == day.currentDate.getMonth() &&
+      date.getFullYear() == day.currentDate.getFullYear()
+    ) {
       classString += " today";
     }
 
