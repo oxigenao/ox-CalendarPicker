@@ -1,4 +1,6 @@
 import { Component, State, EventEmitter, Event, Prop, h } from "@stencil/core";
+import { CalendarDay } from "./models/calendar-day";
+import { getFirstDayOfMonth, getLastDayOfMonth } from "./utils/calendar.utils";
 
 @Component({
   tag: "calendar-picker",
@@ -50,16 +52,21 @@ export class CalendarPicker {
 
   prepareCalendarData(): any {
     this.daysArray = [];
-    this.firstDayOfCurrentMonth =
-      new Date(this.currentYear, this.currentMonth, 1).getDay() - 1;
-    this.lastDayOfCurrentMonth =
-      new Date(this.currentYear, this.currentMonth + 1, 1).getDay() - 2;
+    this.firstDayOfCurrentMonth = getFirstDayOfMonth(
+      this.currentMonth,
+      this.currentYear
+    );
+    this.lastDayOfCurrentMonth = getLastDayOfMonth(
+      this.currentMonth,
+      this.currentYear
+    );
 
     this.lastMonthLength = new Date(
       this.currentYear,
       this.currentMonth,
       0
     ).getDate();
+
     this.monthLength = new Date(
       this.currentYear,
       this.currentMonth + 1,
@@ -167,7 +174,7 @@ export class CalendarPicker {
   }
 
   unSelectDay(day) {
-    let day2Remove = this.isDateOnSelectedDays(day);
+    let day2Remove = this.findDayOnSelectedDays(day);
     if (
       day2Remove != undefined &&
       day2Remove == 0 &&
@@ -180,21 +187,15 @@ export class CalendarPicker {
     this.selectedDaysUpate.emit(this.selectedDaysDate);
   }
 
-  isDateOnSelectedDays(day) {
-    let findIndex;
-    this.selectedDaysDate.forEach((date, index) => {
-      if (
+  findDayOnSelectedDays(day): number {
+    return this.selectedDaysDate.findIndex(date => {
+      return (
         date.getDate() == day.currentDate.getDate() &&
         date.getMonth() == day.currentDate.getMonth() &&
         date.getFullYear() == day.currentDate.getFullYear()
-      ) {
-        findIndex = index;
-      }
+      );
     });
-    return findIndex;
   }
-
-  componentWillUpdate() {}
 
   checkSelected() {
     this.selectedDaysDate.forEach((selectedDay: Date) => {
@@ -284,11 +285,4 @@ export class CalendarPicker {
       </div>
     );
   }
-}
-
-export interface CalendarDay {
-  day: number;
-  selected: boolean;
-  currentDate: Date;
-  notCurrent: boolean;
 }
